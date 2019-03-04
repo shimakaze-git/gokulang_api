@@ -17,8 +17,8 @@ class Kakasi:
 
 # text = u"これはひらがなコレハカタカナ漢字"
 # text = u"これはひらがなコレハカタカナカンジ"
-text = u"俺は孫悟空です"
+# text = u"俺は孫悟空です"
 
-kakasi_converter = Kakasi()
-convert_text = kakasi_converter.convert(text)
-print(convert_text)
+# kakasi_converter = Kakasi()
+# convert_text = kakasi_converter.convert(text)
+# print(convert_text)

@@ -5,12 +5,16 @@ import MeCab
 
 
 DIC_PATH = "/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd"
+DIC_PATH = ""
 
 
 class Morphological:
 
     def __init__(self, dic_path=DIC_PATH):
-        self.mecab = MeCab.Tagger('-d '+dic_path)
+        if dic_path:
+            self.mecab = MeCab.Tagger('-d '+dic_path)
+        else:
+            self.mecab = MeCab.Tagger()
         self.mecab.parseToNode('')
 
         self._surfaces = []
@@ -29,10 +33,15 @@ class Morphological:
     def parts_decision(self, mecab_nodes):
         parts = mecab_nodes.feature.split(',')
         if parts[0] != 'BOS/EOS':
-            return parts[6]
+            parts_list = [
+                # parts[0],
+                parts[6],
+                parts[7]
+            ]
+            return parts_list
 
-text = 'これはテストです。コレはあれです。'
-morphological = Morphological()
-morphological.tokenize(text)
+# text = 'これはテストです。コレはあれです。'
+# morphological = Morphological()
+# morphological.tokenize(text)
 
-print(morphological._surfaces)
+# print(morphological._surfaces)
